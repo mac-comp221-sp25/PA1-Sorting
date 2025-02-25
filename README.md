@@ -2,11 +2,11 @@
 
 Your goal is to implement up to 4 sorting algorithms in either C, Java, or Python from (roughly) scratch. We will then time how fast each sorting algorithm sorts to determine whether our optimized sorts are actually any better than naive sorts.
 
-To receive full credit (100pts), you will need to implement Bubblesort (50pts), Mergesort (25pts), Quicksort w/ Lomuto Partitions (20pts), and Quicksort w/ the Hoare Partition (5pts). I recommend strategizing about how much of the assignment to complete; In many ways, the Hoare partition quicksort implementation is nearly a bonus problem, as doing the rest of the assignment correctly will net you a 95%! 
+To receive full credit (100pts), you will need to implement Bubblesort (50pts), Mergesort (25pts), Quicksort w/ Lomuto Partitions (20pts), and Quicksort w/ the Hoare Partition (5pts). I recommend strategizing about how much of the assignment to complete; In many ways, the Hoare partition quicksort implementation is a bonus problem, as doing the rest of the assignment correctly will net you a 95% --- An A! 
 
 ### Project Specifications 
 
-Your solution will be graded on **correctness** (does the algorithm actually sort, and is it the sort that it claims to be). However, to be tested, you will need to make sure your code accepts the correct command-line arguments and outputs the proper output, up to the exact formatting. There are two configurations you should be familiar with, outlined in the following sections.
+Your solution will be graded on **correctness** (does the algorithm actually sort, and is it the sort that it claims to be). However, to be tested, you will need to make sure your code accepts the correct command-line arguments and outputs the proper output, up to the exact formatting. There are two modes your solution should handle, both of which are outlined in the following sections.
 
 #### Sorting Mode
 
@@ -26,7 +26,7 @@ Your code should output
 ``` 
 That is, when given only the --ints and --alg arguments, which specify the integers to sort and the algorithm to sort with, you should output the integers, one-per-line, in sorted order.
 
-You should accept any integers as arguments to ints and accept the following labels for the sorting algorithms: bubble (for bubblesort), merge (for mergesort), qslomuto (for quicksort with the lomuto partition), and qshoare (for quicksort with the hoare partition). 
+You should accept any integers as arguments to ints and accept the following labels for the sorting algorithms: `bubble` (for bubblesort), `merge` (for mergesort), `qslomuto` (for quicksort with the lomuto partition scheme), and `qshoare` (for quicksort with the hoare partition scheme). 
 
 #### Timing Mode
 
@@ -42,9 +42,11 @@ Your code should output something like
 0.012
 ```
 
-indicating that sorting the 4 elements took approximately 0.012ms (or 12 millionths of a second). You should ensure that the data your code sends to stdout (the standard output) can be parsed as a float. Format your output such that you return the number of milliseconds with 3 places past the decimal point preserved. This will ensure the output is compatible with any post-processing. 
+indicating that sorting the 4 elements took approximately 0.012ms (or 12 millionths of a second). 
 
-**Failing to return outputs that match these requirements will cause you to lose a significant number of points**. If any of these instructions are unclear, please ask for clarifcation as early as possible.
+Format your output such that you return the number of milliseconds sorting took, rounding to 3 places past the decimal point. This will ensure the output is compatible with any post-processing. Include no extraneous text --- if it cannot be parsed as a float, your output cannot be post-processing by the plotting script.
+
+**Failing to return outputs that match these requirements will cause you to lose a significant number of points**. If any of these instructions are unclear, please ask for clarification as early as possible.
 
 
 #### Notes:
@@ -53,13 +55,13 @@ indicating that sorting the 4 elements took approximately 0.012ms (or 12 million
 
 - Look to the QuickSort activity to see pseudocode for the Hoare Partitioning Scheme, which is the only thing we didn't see in class.
 
-- If you choose to code in python, note that since there isn't a first-party array implementation, you must use the array implementation from numpy. **This is the only 3rd-party library you are allowed to use**. 
+- If you choose to code in python, note that since there isn't a first-party array implementation, you must use the array implementation from `numpy`, as the starter code does. **This is the only 3rd-party library you are allowed to use**. 
 
-- The provided starter code provides sample code for interacting with command-line arguments, if you haven't seen code like this before. You should modify this code as necessary to match the project specification above.
+- The provided starter code provides sample code for interacting with command-line arguments, in case you haven't seen code like this before. You should modify this code as necessary to match the project specification above.
 
-- The provided starter code also provides pa1.sh, a bash file that simplifies grading by providing a single way to run your code regardless of what language it's in. Be sure to open the file and read the instructions in the file to understand how it should function, and how to edit the script. **Failure to do this may result in the loss of points!**
+- The provided starter code also provides pa1.sh, a bash file that simplifies grading by providing a single way to run your code regardless of what language it's in. Be sure to open the file and read the instructions in the file to understand how it should function, and how to edit the script so it selects the language you chose to use. **Failure to do this may result in the loss of points!**
 
-- Note that the pa1.sh file DOES NOT compile your c or java code for you. Make sure you setup/modify the provided build system (Make or Gradle) to compile your sorting code in a place where pa1.sh can find it. Feel free to modify pa1.sh as needed to do so.
+- Note that the pa1.sh file DOES NOT compile your c or java code for you. Make sure you setup/modify the provided build system (Make or Gradle) to compile your sorting code in a place where pa1.sh can find it. You should feel free to modify pa1.sh as needed to do so, but be wary that it should *not* print any extraneous output! You may use the (currently empty) setup.sh to indicate how you would like your code to be built.
 
 - Github actions have been set up to autorun code to sample the runtime of your sorting algorithms for various choices of n and then plot those results. You can also run this manually using the plotting code in the sampling/ folder. **Don't modify this script**, but feel free to use it to verify your output is properly formatted.
 
