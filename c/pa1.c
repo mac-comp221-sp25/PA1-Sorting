@@ -7,6 +7,7 @@ int main(int argc, char *argv[]) {
     int *ints;
     int num_ints = 0;
     char *alg;
+    int time = 0;
 
     // Argument parsing
     int i = 1;
@@ -30,6 +31,11 @@ int main(int argc, char *argv[]) {
             alg = argv[i];
             i++;   
         } 
+        // Grab the time arg
+        else if(strcmp(argv[i], "--time") == 0) {
+            time = 1;
+            i++;
+        } 
         else {
             i++;
         }
@@ -40,6 +46,7 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < num_ints; i++) {
         printf("%i\n", ints[i]);
     } 
+    printf("%s\n", (time? "true" : "false"));
 
     if (num_ints > 0) free(ints); // This is where ints is eventually free'd
 }

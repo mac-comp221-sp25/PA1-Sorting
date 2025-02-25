@@ -1,2 +1,2 @@
-hw2: hw2.c
-	gcc hw2.c -o hw2
+pa1: pa1.c
+	gcc pa1.c -o pa1

@@ -1,4 +1,4 @@
-package hw2_template;
+package pa1_template;
 
 /*
  * SortArgParser parses command line arguments --ints and --alg
@@ -8,6 +8,7 @@ package hw2_template;
 public class SortArgParser {
     private int[] ints;
     private String alg;
+    private boolean time;
 
     /**
      * Constructor
@@ -37,6 +38,10 @@ public class SortArgParser {
                     ints[j] = Integer.parseInt(args[j + start]);
                 }
             }
+            else if (args[i].equals("--time")) {
+                i++;
+                time = true;
+            }
             else {
                 i++;
             }
@@ -57,5 +62,13 @@ public class SortArgParser {
      */
     public String getAlg() {
         return alg;
+    }
+
+    /**
+     * returns whether you're in timing mode
+     * @return true if you are in timing mode, false otherwise
+     */
+    public boolean getTime() {
+        return time;
     }
 }
