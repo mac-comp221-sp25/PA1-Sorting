@@ -66,3 +66,23 @@ Format your output such that you return the number of milliseconds sorting took,
 - Github actions have been set up to autorun code to sample the runtime of your sorting algorithms for various choices of n and then plot those results. You can also run this manually using the plotting code in the sampling/ folder. **Don't modify this script**, but feel free to use it to verify your output is properly formatted.
 
 - If anything is unclear, or you think you've found a typo, please let me know as soon as you can!
+
+#### Tips for Java
+
+##### Modifying pa1.sh
+
+The standard way to run Java code in the command-line is, as one might expect, with the `java` command. What it always wants passed in is the name of the main class to run. If you're running it from a directory that doesn't contain all of your compiled `.class` files, it will also want a *classpath*, which tells you where those classes are! This is specified by the `-cp` option. So the standard call to `java` for us will look like
+
+```bash
+java -cp [PATH TO .CLASS FILES] [NAME OF MAIN CLASS]
+```
+where you substitute for the things in brackets. Given the structure I've given you in the Java project, `pa1_template.pa1` is the name of the package/class our code is in, so we have to find the path where the `pa1_template` folder resides.
+
+This is the line that should be in your `pa1.sh` file if you're using Java!
+
+##### Compiling Java Code
+
+Your typical method for compiling Java code is probably either (1) just hitting compile & run in VSCode or (2) Using Gradle Build. The way things are set-up in VSCode, these may result in different locations where your code ends up! By default, running `gradle build` will put things in the `java/build/classes/java/main/` folder, and VSCode places it in `java/bin/main/` 
+
+If you want to have the plot autogeneration go easily, my recommendation is to compile using gradle, and uncomment the lines in the ./setup.sh file in this repository to build using gradle for you. That way, you can compile your code via the commandline by running `./setup.sh`, and then run your code using something like `./pa1.sh --ints 1 2 3 --alg bubble --time`. This means you should have the classpath in `pa1.sh` refer to the gradle build path, which you can manually verify after using `setup.sh`
+

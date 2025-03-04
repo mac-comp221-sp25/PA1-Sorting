@@ -1,0 +1,24 @@
+name: Generate Plots
+run-name: gen-plots
+on: [push]
+permissions:
+  contents: write
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '8'
+      - run: ./setup.sh
+      - run: pip3 install -r sampling/requirements.txt
+      - run: python3 sampling/generate_plots.py
+      - run: | 
+          git add .
+          git config user.email "sarehall@macalester.edu"
+          git config user.name "PA1-Autogen"
+          git commit -m "auto-gen plots"
+          git push
